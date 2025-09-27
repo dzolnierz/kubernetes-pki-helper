@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-PILLAR="${1:-/srv/salt/pillar/base/kubernetes.sls}"
-FILES=(CA.crt CA.key.gpg sa.key.gpg sa.pub proxy-ca.crt proxy-ca.key.gpg)
-MARKERS=("%CA CERT%" "%CA KEY%" "%SA KEY%" "%SA PUB%" "%PROXY CA CERT%" "%PROXY CA KEY%")
+PILLAR="${1:-/srv/salt/pillar/kubernetes.sls}"
+FILES=(ca.crt ca.key.gpg sa.key.gpg sa.pub front-proxy-ca.crt front-proxy-ca.key.gpg)
+MARKERS=("%CA.crt%" "%CA.key%" "%SA.key%" "%SA.pub%" "%FRONT PROXY CA.crt%" "%FRONT PROXY CA.key%")
 
 for i in "${!FILES[@]}"; do
 	REPLACEMENT=$(:| paste -d ' ' - - - - - - - - - - "${FILES[$i]}")

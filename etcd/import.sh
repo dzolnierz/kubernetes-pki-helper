@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-PILLAR="${1:-/srv/salt/pillar/base/etcd.sls}"
-FILES=(CA.crt CA.key.gpg)
-MARKERS=("%CA CERT%" "%CA KEY%")
+PILLAR="${1:-/srv/salt/pillar/etcd.sls}"
+FILES=(ca.crt ca.key.gpg)
+MARKERS=("%CA.crt%" "%CA.key%")
 
 for i in "${!FILES[@]}"; do
 	REPLACEMENT=$(:| paste -d ' ' - - - - - - - - - - "${FILES[$i]}")
